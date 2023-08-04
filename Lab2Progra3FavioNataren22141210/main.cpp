@@ -1,6 +1,42 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
+
+int obtenerNumRandom() {
+	return rand() % 1001 - 500;
+}
+
+void imprimirArray2(const vector<int>& arr) {
+	for (int num : arr) {
+		cout << num << " ";
+	}
+	
+}
+
+int buscarNumero2(const vector<int>& arr, int numero) {
+	int comparaciones = 0;
+	int izquierda = 0;
+	int derecha = arr.size() - 1;
+
+	while (izquierda <= derecha) {
+		comparaciones++;
+		int medio = izquierda + (derecha - izquierda) / 2;
+
+		if (arr[medio] == numero) {
+			return comparaciones;
+		}
+
+		if (arr[medio] < numero) {
+			izquierda = medio + 1;
+		}
+		else {
+			derecha = medio - 1;
+		}
+	}
+
+	return -1;
+}
 
 void imprimirArray(const vector<int>& arr) {
 	for (int num : arr) {
@@ -37,6 +73,39 @@ void menu(int e)
 	switch (e) {
 
 	case 1: {
+		cout << "\n\n----Ejercicio 1----";
+
+		srand(time(nullptr));  // Inicializar generador de números aleatorios
+
+		const int n = 20;  // Tamaño del arreglo
+
+		vector<int> arreglo(n);
+		for (int i = 0; i < n; ++i) {
+			arreglo[i] = obtenerNumRandom();
+		}
+
+		sort(arreglo.begin(), arreglo.end());  // Ordenar el arreglo
+
+		
+
+		int numeroABuscar;
+		cout << "Ingrese el numero a buscar: ";
+		cin >> numeroABuscar;
+
+		int comparaciones = buscarNumero2(arreglo, numeroABuscar);
+
+		cout << "Arreglo ordenado: ";
+		imprimirArray(arreglo);
+
+		if (comparaciones == -1) {
+			cout << "El numero "<< numeroABuscar<<" no se encuentra en el arreglo." << endl;
+
+			cout << "Numero de comparaciones realizadas: " << comparaciones << endl;
+
+		}
+		else {
+			cout << "Número de comparaciones realizadas: " << comparaciones << endl;
+		}
 
 		break;
 	}
@@ -44,7 +113,7 @@ void menu(int e)
 	case 2: {
 		cout << "\n\n----Ejercicio 2----";
 
-		cout << "\n\n----Ejercicio 1----";
+		
 		int iteraciones;
 		cout << "Ingrese el numero de iteraciones: ";
 		cin >> iteraciones;
@@ -87,3 +156,6 @@ int main() {
 
 
 }
+
+
+
