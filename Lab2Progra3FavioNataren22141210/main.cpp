@@ -72,75 +72,75 @@ void menu(int e)
 
 	switch (e) {
 
-	case 1: {
-		cout << "\n\n----Ejercicio 1----";
+		case 1: {
+			cout << "\n\n----Ejercicio 1----\n";
 
-		srand(time(nullptr));  // Inicializar generador de números aleatorios
+			srand(time(nullptr));  // Inicializar generador de números aleatorios
 
-		const int n = 20;  // Tamaño del arreglo
+			const int n = 20;  // Tamaño del arreglo
 
-		vector<int> arreglo(n);
-		for (int i = 0; i < n; ++i) {
-			arreglo[i] = obtenerNumRandom();
-		}
+			vector<int> arreglo(n);
+			for (int i = 0; i < n; ++i) {
+				arreglo[i] = obtenerNumRandom();
+			}
 
-		sort(arreglo.begin(), arreglo.end());  // Ordenar el arreglo
-
-		
-
-		int numeroABuscar;
-		cout << "Ingrese el numero a buscar: ";
-		cin >> numeroABuscar;
-
-		int comparaciones = buscarNumero2(arreglo, numeroABuscar);
-
-		cout << "Arreglo ordenado: ";
-		imprimirArray(arreglo);
-
-		if (comparaciones == -1) {
-			cout << "El numero "<< numeroABuscar<<" no se encuentra en el arreglo." << endl;
-
-			cout << "Numero de comparaciones realizadas: " << comparaciones << endl;
-
-		}
-		else {
-			cout << "Número de comparaciones realizadas: " << comparaciones << endl;
-		}
-
-		break;
-	}
-
-	case 2: {
-		cout << "\n\n----Ejercicio 2----";
+			sort(arreglo.begin(), arreglo.end());  // Ordenar el arreglo
 
 		
-		int iteraciones;
-		cout << "Ingrese el numero de iteraciones: ";
-		cin >> iteraciones;
 
-		if (iteraciones >= 1 && iteraciones <= 50) {
-			generarTrianguloPascal(iteraciones);
+			int numeroABuscar;
+			cout << "Ingrese el numero a buscar: ";
+			cin >> numeroABuscar;
+
+			int comparaciones = buscarNumero2(arreglo, numeroABuscar);
+
+			cout << "Arreglo ordenado: ";
+			imprimirArray(arreglo);
+
+			if (comparaciones == -1) {
+				cout << "El numero "<< numeroABuscar<<" no se encuentra en el arreglo." << endl;
+
+				cout << "Numero de comparaciones realizadas: " << comparaciones << endl;
+
+			}
+			else {
+				cout << "Número de comparaciones realizadas: " << comparaciones << endl;
+			}
+
+			break;
 		}
-		else {
-			cout << "El numero de iteraciones debe estar entre 1 y 50." << endl;
+
+		case 2: {
+			cout << "\n\n----Ejercicio 2----\n";
+
+		
+			int iteraciones;
+			cout << "Ingrese el numero de iteraciones: ";
+			cin >> iteraciones;
+
+			if (iteraciones >= 1 && iteraciones <= 50) {
+				generarTrianguloPascal(iteraciones);
+			}
+			else {
+				cout << "El numero de iteraciones debe estar entre 1 y 50." << endl;
+			}
+
+			break;
 		}
 
-		break;
-	}
+		case 3: {
+			system("cls");
+			cout << "Saliendo, hasta luego!" << endl;
+			break;
+		}
 
-	case 3: {
-		system("cls");
-		cout << "Saliendo, hasta luego!" << endl;
-		break;
-	}
+		default: {
 
-	default: {
-
-		cout << "\nEsa opcion no existe!" << endl;
-		system("pause");
-		system("cls");
-		break;
-	}
+			cout << "\nEsa opcion no existe!" << endl;
+			system("pause");
+			system("cls");
+			break;
+		}
 	}
 }
 
@@ -153,9 +153,4 @@ int main() {
 		menu(x);
 
 	}
-
-
 }
-
-
-
